@@ -1,11 +1,11 @@
-const rock = "Rock"
-const paper = "Paper"
-const scissors = "Scissors"
+const rock = "rock"
+const paper = "paper"
+const scissors = "scissors"
+
+const options = [rock, paper, scissors]
 
 let humanScore = 0
 let computerScore = 0
-
-const options = [rock, paper, scissors]
 
 function getComputerChoice() {
     return options[Math.floor(Math.random()*options.length)];
@@ -48,4 +48,16 @@ function playRound() {
     }
     return result
 }
+
+
+function playGame() {
+
+    for (let index = 0; index < 5; index++) {
+        console.log(playRound());
+        console.log("Player score is: " + humanScore)
+        console.log("Computer score is: " + computerScore)
+    }
+}
+
+playGame()
 
