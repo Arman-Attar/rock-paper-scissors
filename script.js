@@ -6,24 +6,24 @@ const options = [rock, paper, scissors]
 
 let humanScore = 0
 let computerScore = 0
+let humanSelection = ""
+let computerSelection = ""
 
 function getComputerChoice() {
     return options[Math.floor(Math.random()*options.length)];
 }
 
-function getHumanChoice() {
-    let done = false
-    while (!done) {
-        let choice = prompt("What is your choice?").toLowerCase()
-        if (choice === "rock" || choice === "paper" || choice === "scissors" ) {
-            return choice
-        } 
-    }
-}
+// function getHumanChoice() {
+//     let done = false
+//     while (!done) {
+//         let choice = prompt("What is your choice?").toLowerCase()
+//         if (choice === "rock" || choice === "paper" || choice === "scissors" ) {
+//             return choice
+//         } 
+//     }
+// }
 
 function playRound() {
-    let humanSelection = getHumanChoice()
-    let computerSelection = getComputerChoice()
     let result = ""
     if (humanSelection === "rock" && computerSelection === "paper") {
         result = "You lose! Paper beats Rock"
@@ -50,14 +50,24 @@ function playRound() {
 }
 
 
-function playGame() {
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        humanSelection = button.id
+        computerSelection = getComputerChoice()
+        playRound()
+    })
+})
 
-    for (let index = 0; index < 5; index++) {
-        console.log(playRound());
-        console.log("Player score is: " + humanScore)
-        console.log("Computer score is: " + computerScore)
-    }
-}
 
-playGame()
+
+// function playGame() {
+
+//     for (let index = 0; index < 5; index++) {
+//         console.log(playRound());
+//         console.log("Player score is: " + humanScore)
+//         console.log("Computer score is: " + computerScore)
+//     }
+// }
+
 
